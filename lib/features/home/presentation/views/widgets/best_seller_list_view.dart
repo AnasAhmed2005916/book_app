@@ -22,7 +22,7 @@ class BestSellerListView extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 16,
               mainAxisSpacing: 20,
-              childAspectRatio: 0.62,
+              childAspectRatio: 0.58,
             ),
             itemCount: state.books.length,
             itemBuilder: (context, index) {

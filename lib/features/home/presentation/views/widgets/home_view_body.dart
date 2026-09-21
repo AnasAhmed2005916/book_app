@@ -58,7 +58,7 @@ class HomeViewBody extends StatelessWidget {
                   ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
                 ),
                 const SizedBox(height: 24),
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     context.push(AppRouter.kSearchView);
                   },

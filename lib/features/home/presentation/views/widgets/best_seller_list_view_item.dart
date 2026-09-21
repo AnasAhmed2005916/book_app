@@ -19,6 +19,7 @@ class BestSellerListViewItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // إعطاء الصورة مساحة مرنة لتأخذ ما تبقى وتترك مكاناً للنصوص
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
@@ -42,7 +43,7 @@ class BestSellerListViewItem extends StatelessWidget {
                     ),
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           Text(
             book.title ?? 'Unknown Title',
             style: Styles.textStyle16.copyWith(fontWeight: FontWeight.bold),

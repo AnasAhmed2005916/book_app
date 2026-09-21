@@ -1,10 +1,10 @@
 class BookModel {
-  String? title;
-  List<String>? authorName;
-  int? firstPublishYear;
-  int? coverId;
-  String? key;
-  List<String>? subjects;
+  final String? title;
+  final List<String>? authorName;
+  final int? firstPublishYear;
+  final int? coverId;
+  final String? key;
+  final List<String>? subjects;
 
   BookModel({
     this.title,
