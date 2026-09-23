@@ -3,7 +3,7 @@ import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/service_locator.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly_app/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
-import 'package:bookly_app/features/home/presentation/manager/newset_books_cubit/newset_books_cubit.dart';
+import 'package:bookly_app/features/home/presentation/manager/newest_books_cubit/newset_books_cubit.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +34,7 @@ class BooklyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              NewsetBooksCubit(getIt.get<HomeRepoImpl>())..fetchNewsetBooks(),
+              NewestBooksCubit(getIt.get<HomeRepoImpl>())..fetchNewsetBooks(),
         ),
       ],
       child: MaterialApp.router(

@@ -21,7 +21,7 @@ class SearchCubit extends Cubit<SearchState> {
 
     emit(SearchLoading());
 
-    var result = await homeRepo.fetchSearchBooks(currentQuery, currentPage);
+    final result = await homeRepo.fetchSearchBooks(currentQuery, currentPage);
 
     result.fold(
       (failure) {

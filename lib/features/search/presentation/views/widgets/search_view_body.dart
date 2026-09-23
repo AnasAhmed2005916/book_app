@@ -37,16 +37,69 @@ class SearchViewBody extends StatelessWidget {
                 }
 
                 if (state is SearchEmpty) {
-                  return const Center(child: Text('No books found'));
+                  return const Center(
+                    child: Text(
+                      'No books found',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  );
                 }
 
                 if (state is SearchFailure) {
                   return Center(child: Text(state.errMessage));
                 }
 
-                return const SizedBox();
+                return const _SearchInitialWidget();
               },
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SearchInitialWidget extends StatelessWidget {
+  const _SearchInitialWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 80,
+            width: 80,
+            decoration: BoxDecoration(
+              color: Theme.of(
+                context,
+              ).colorScheme.primary.withValues(alpha: 0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.search_rounded,
+              size: 40,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'Search for a book',
+            style: Theme.of(
+              context,
+            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Find your next favorite book',
+            textAlign: TextAlign.center,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
           ),
         ],
       ),

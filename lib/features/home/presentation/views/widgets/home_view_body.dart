@@ -1,5 +1,5 @@
 import 'package:bookly_app/core/utils/app_router.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/newest_books_grid.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/featured_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -98,7 +98,7 @@ class HomeViewBody extends StatelessWidget {
                 const FeaturedBooksListView(),
                 const SizedBox(height: 32),
                 Text(
-                  'Popular Books',
+                  'Newest Books',
                   style: Theme.of(
                     context,
                   ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
@@ -110,7 +110,7 @@ class HomeViewBody extends StatelessWidget {
         ),
         const SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          sliver: SliverFillRemaining(child: BestSellerListView()),
+          sliver: NewestBooksGrid(),
         ),
       ],
     );
