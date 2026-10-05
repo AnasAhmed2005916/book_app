@@ -39,6 +39,21 @@ class HomeViewBody extends StatelessWidget {
                         color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.circular(14),
                       ),
+                      child: IconButton(
+                        onPressed: () {
+                          context.push(AppRouter.kFavoritesView);
+                        },
+                        icon: const Icon(Icons.favorite_border_rounded),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Container(
+                      height: 46,
+                      width: 46,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface,
+                        borderRadius: BorderRadius.circular(14),
+                      ),
                       child: const Icon(Icons.notifications_none_rounded),
                     ),
                   ],

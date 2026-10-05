@@ -1,5 +1,6 @@
 import 'package:bookly_app/core/errors/failures.dart';
 import 'package:bookly_app/core/utils/api_service.dart';
+import 'package:bookly_app/features/home/data/models/book_details_model/book_details_model.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -26,6 +27,23 @@ class HomeRepoImpl implements HomeRepo {
     return _fetchBooks(
       endPoint: 'search.json?subject=$encodedSubject&limit=10',
     );
+  }
+
+  @override
+  Future<Either<Failure, BookDetailsModel>> fetchBookDetails(String key) async {
+    try {
+      final data = await apiService.get(
+        endPoint: '${key.replaceFirst('/', '')}.json',
+      );
+
+      return right(BookDetailsModel.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+
+      return left(ServerFailure(e.toString()));
+    }
   }
 
   @override

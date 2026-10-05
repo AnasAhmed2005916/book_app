@@ -4,6 +4,7 @@ import 'package:bookly_app/features/search/presentation/manager/search_cubit/sea
 import 'package:bookly_app/features/search/presentation/views/widgets/search_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -12,7 +13,16 @@ class SearchView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SearchCubit(getIt.get<HomeRepoImpl>()),
-      child: Scaffold(body: SafeArea(child: SearchViewBody())),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () => context.pop(),
+            icon: const Icon(Icons.arrow_back_ios_rounded),
+          ),
+          title: const Text('Search Books'),
+        ),
+        body: const SafeArea(child: SearchViewBody()),
+      ),
     );
   }
 }

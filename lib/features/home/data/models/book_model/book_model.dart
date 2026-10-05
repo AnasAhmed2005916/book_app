@@ -5,6 +5,7 @@ class BookModel {
   final int? coverId;
   final String? key;
   final List<String>? subjects;
+  final bool isFavorite;
 
   BookModel({
     this.title,
@@ -13,6 +14,7 @@ class BookModel {
     this.coverId,
     this.key,
     this.subjects,
+    this.isFavorite = false,
   });
 
   factory BookModel.fromJson(Map<String, dynamic> json) {
@@ -27,6 +29,7 @@ class BookModel {
       subjects: json['subject'] != null
           ? List<String>.from(json['subject'])
           : null,
+      isFavorite: json['isFavorite'] as bool? ?? false,
     );
   }
 
@@ -38,6 +41,27 @@ class BookModel {
       'cover_i': coverId,
       'key': key,
       'subject': subjects,
+      'isFavorite': isFavorite,
     };
+  }
+
+  BookModel copyWith({
+    String? title,
+    List<String>? authorName,
+    int? firstPublishYear,
+    int? coverId,
+    String? key,
+    List<String>? subjects,
+    bool? isFavorite,
+  }) {
+    return BookModel(
+      title: title ?? this.title,
+      authorName: authorName ?? this.authorName,
+      firstPublishYear: firstPublishYear ?? this.firstPublishYear,
+      coverId: coverId ?? this.coverId,
+      key: key ?? this.key,
+      subjects: subjects ?? this.subjects,
+      isFavorite: isFavorite ?? this.isFavorite,
+    );
   }
 }

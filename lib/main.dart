@@ -5,19 +5,13 @@ import 'package:bookly_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly_app/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/manager/newest_books_cubit/newset_books_cubit.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   setupServiceLocator();
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const BooklyApp(),
-    ),
-  );
+  runApp(BooklyApp());
 }
 
 class BooklyApp extends StatelessWidget {
@@ -56,4 +50,6 @@ class BooklyApp extends StatelessWidget {
 // هبدأ فى الفيديو 84
 /**
  * https://www.googleapis.com/books/v1/volumes?q=programming
+ * 
+ * https://chatgpt.com/share/6abdb3d5-7bf8-83ea-91de-a95be69d7138
  */

@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/errors/failures.dart';
+import 'package:bookly_app/features/home/data/models/book_details_model/book_details_model.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:dartz/dartz.dart';
 
@@ -12,4 +13,5 @@ abstract class HomeRepo {
     String query,
     int page,
   );
+  Future<Either<Failure, BookDetailsModel>> fetchBookDetails(String key);
 }
