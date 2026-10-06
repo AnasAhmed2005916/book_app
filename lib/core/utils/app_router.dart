@@ -3,6 +3,7 @@ import 'package:bookly_app/features/home/data/models/book_model/book_model.dart'
 import 'package:bookly_app/features/home/presentation/views/book_details_view.dart';
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/features/search/presentation/views/search_view.dart';
+import 'package:bookly_app/features/settings/presentation/views/settings_view.dart';
 import 'package:bookly_app/features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,6 +12,8 @@ abstract class AppRouter {
   static const kBookDetailsView = '/bookDetailsView';
   static const kSearchView = '/searchView';
   static const kFavoritesView = '/favorites';
+  static const kSettingsView = '/settingsView';
+
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashView()),
@@ -27,10 +30,13 @@ abstract class AppRouter {
         path: kSearchView,
         builder: (context, state) => const SearchView(),
       ),
-
       GoRoute(
         path: kFavoritesView,
         builder: (context, state) => const FavoritesView(),
+      ),
+      GoRoute(
+        path: kSettingsView,
+        builder: (context, state) => const SettingsView(),
       ),
     ],
   );

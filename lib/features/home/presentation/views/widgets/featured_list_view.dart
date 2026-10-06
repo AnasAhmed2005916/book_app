@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/custom_loading_indicator.dart';
 import 'package:bookly_app/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
@@ -5,6 +6,7 @@ import 'package:bookly_app/features/home/presentation/manager/featured_books_cub
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({super.key});
@@ -26,20 +28,29 @@ class FeaturedBooksListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return SizedBox(
                   width: 155,
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surface,
-                      borderRadius: BorderRadius.circular(22),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.06),
-                          blurRadius: 14,
-                          offset: const Offset(0, 6),
-                        ),
-                      ],
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(22),
+                    onTap: () {
+                      context.push(
+                        AppRouter.kBookDetailsView,
+                        extra: state.books[index],
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface,
+                        borderRadius: BorderRadius.circular(22),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.06),
+                            blurRadius: 14,
+                            offset: const Offset(0, 6),
+                          ),
+                        ],
+                      ),
+                      child: CustomListViewItem(book: state.books[index]),
                     ),
-                    child: CustomListViewItem(book: state.books[index]),
                   ),
                 );
               },
